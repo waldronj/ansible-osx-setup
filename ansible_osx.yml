@@ -36,8 +36,6 @@
         - ngrok
         - sublime-text
         - visual-studio-code
-        - azure-cli
-        - awscli
         
     - name: "Install homebrew packages"
       community.general.homebrew:
@@ -46,6 +44,7 @@
           'automake',
           'aws-iam-authenticator',
           'awscli',
+          'azure-cli',
           'bfg',
           'coreutils',
           'curl',
