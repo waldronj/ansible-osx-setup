@@ -18,7 +18,6 @@
         name: [
           adoptopenjdk/openjdk,
           fishtown-analytics/dbt,
-          heroku/brew,
           homebrew/cask-versions,
           thoughtbot/formulae,
           weaveworks/tap,
@@ -29,26 +28,17 @@
         name: "{{ item }}"
       ignore_errors: yes
       with_items:
-        - 1password
         - android-sdk
         - android-studio
-        - datagrip
         - docker
-        - dropbox
-        - figma
         - google-chrome
-        - google-cloud-sdk
         - iterm2
-        - kindle
         - ngrok
-        - slack
         - sublime-text
-        - telegram
         - visual-studio-code
-        - vlc
-        - zoom
-        - tuple
-
+        - azure-cli
+        - awscli
+        
     - name: "Install homebrew packages"
       community.general.homebrew:
         name: [
@@ -61,11 +51,9 @@
           'curl',
           'dbt@0.18.0',
           'direnv',
-          'dnsmasq',
           'fzf',
           'gnu-time',
           'gpg',
-          'heroku',
           'htop',
           'imagemagick@6',
           'kubectx',
@@ -95,10 +83,10 @@
         state: present
         update_homebrew: yes
 
-    - name: "Install from Mac app store"
-      shell: mas install {{ item }}
-      with_items:
-        - 497799835 # xcode
+#     - name: "Install from Mac app store"
+#       shell: mas install {{ item }}
+#       with_items:
+#         - 497799835 # xcode
 
     - name: Get the path to ZSH
       become: false
@@ -183,11 +171,7 @@
         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
         asdf plugin-add {{ item }} || exit 0
       with_items:
-        - ruby
-        - elixir
-        - nodejs
         - python
-        - erlang
 
     - name: "Install Default Python"
       shell: |
@@ -197,47 +181,47 @@
         pip3 install ansible
         asdf reshim python
 
-    - name: "Install Default Ruby"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        asdf install ruby 3.0.2
-        asdf global ruby 3.0.2
-        gem install bundler
-        gem install cocoapods
-        gem install rubocop
-        gem install solargraph
+#     - name: "Install Default Ruby"
+#       shell: |
+#         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+#         asdf install ruby 3.0.2
+#         asdf global ruby 3.0.2
+#         gem install bundler
+#         gem install cocoapods
+#         gem install rubocop
+#         gem install solargraph
 
-    - name: "Install default node"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        bash /Users/{{ lookup('env', 'USER') }}/.asdf/plugins/nodejs/bin/import-release-team-keyring
-        asdf install nodejs 16.4.2
-        asdf global nodejs 16.4.2
+#     - name: "Install default node"
+#       shell: |
+#         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+#         bash /Users/{{ lookup('env', 'USER') }}/.asdf/plugins/nodejs/bin/import-release-team-keyring
+#         asdf install nodejs 16.4.2
+#         asdf global nodejs 16.4.2
 
-    - name: "Install default erlang"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        asdf install erlang 24.0.2
-        asdf global  erlang 24.0.2
+#     - name: "Install default erlang"
+#       shell: |
+#         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+#         asdf install erlang 24.0.2
+#         asdf global  erlang 24.0.2
 
 
-    - name: "Install default elixir"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        asdf install elixir 1.12.3-otp-24
-        asdf global elixir 1.12.3-otp-24
-        mix local.hex --force
+#     - name: "Install default elixir"
+#       shell: |
+#         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+#         asdf install elixir 1.12.3-otp-24
+#         asdf global elixir 1.12.3-otp-24
+#         mix local.hex --force
 
-    - name: Install yarn packages
-      shell: yarn global add {{ item }}
-      with_items:
-        - react-native-cli
-        - create-react-app
-        - apollo
-        - generator-generator
-        - yo
+#     - name: Install yarn packages
+#       shell: yarn global add {{ item }}
+#       with_items:
+#         - react-native-cli
+#         - create-react-app
+#         - apollo
+#         - generator-generator
+#         - yo
         
-    - name: re-generate bins now we've installed some yarn packages
-      shell: asdf reshim nodejs
+#     - name: re-generate bins now we've installed some yarn packages
+#       shell: asdf reshim nodejs
         
 
