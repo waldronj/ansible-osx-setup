@@ -1,6 +1,11 @@
 ---
 - hosts: localhost
   tasks:
+    - name: Create local Repos directory
+      file:
+        path: ~/Repos
+        state: directory
+
     - name: Install homebrew
       include_role:
         name: geerlingguy.mac.homebrew
@@ -9,20 +14,21 @@
       ansible.builtin.lineinfile:
         path: /etc/paths
         state: present
-        line: '/opt/homebrew/bin'
+        line: "/opt/homebrew/bin"
       become: true
       become_user: root
 
-    - name: 'add custom homebrew repos'
+    - name: "add custom homebrew repos"
       community.general.homebrew_tap:
-        name: [
-          adoptopenjdk/openjdk,
-          fishtown-analytics/dbt,
-          homebrew/cask-versions,
-          thoughtbot/formulae,
-          weaveworks/tap,
-          warrensbox/tap,
-        ]
+        name:
+          [
+            adoptopenjdk/openjdk,
+            fishtown-analytics/dbt,
+            homebrew/cask-versions,
+            thoughtbot/formulae,
+            weaveworks/tap,
+            warrensbox/tap,
+          ]
 
     - name: Install core packages via brew casks
       community.general.homebrew_cask:
@@ -38,59 +44,63 @@
         - sublime-text
         - visual-studio-code
         - openvpn-connect
-        
+
     - name: "Install homebrew packages"
       community.general.homebrew:
-        name: [
-          'autoconf',
-          'automake',
-          'aws-iam-authenticator',
-          'awscli',
-          'azure-cli',
-          'bfg',
-          'coreutils',
-          'curl',
-          'dbt@0.18.0',
-          'direnv',
-          'fzf',
-          'gnu-time',
-          'gpg',
-          'htop',
-          'imagemagick@6',
-          'kubectx',
-          'kubernetes-cli',
-          'kubernetes-helm',
-          'libtool',
-          'libxslt',
-          'libyaml',
-          'mas',
-          'openssl',
-          'pkg-config',
-          'postgresql',
-          'pyenv',
-          'rcm',
-          'readline',
-          'redis',
-          'sqlite3',
-          'tfswitch',
-          'tmux',
-          'unixodbc',
-          'unzip',
-          'vim',
-          'virtualenv',
-          'watchman',
-          'xz',
-          'yarn',
-          'zlib',
-          'zsh',
-        ]
+        name:
+          [
+            "autoconf",
+            "automake",
+            "aws-iam-authenticator",
+            "awscli",
+            "azure-cli",
+            "bfg",
+            "coreutils",
+            "curl",
+            "dbt@0.18.0",
+            "direnv",
+            "docker",
+            "fzf",
+            "gnu-time",
+            "gpg",
+            "helm",
+            "htop",
+            "imagemagick@6",
+            "kubectx",
+            "kubernetes-cli",
+            "kubernetes-helm",
+            "libtool",
+            "libxslt",
+            "libyaml",
+            "mas",
+            "minikube",
+            "openssl",
+            "pkg-config",
+            "postgresql",
+            "pyenv",
+            "rcm",
+            "readline",
+            "redis",
+            "sqlite3",
+            "tfswitch",
+            "tmux",
+            "unixodbc",
+            "unzip",
+            "vim",
+            "virtualenv",
+            "watchman",
+            "xz",
+            "yarn",
+            "zlib",
+            "zsh",
+          ]
         state: present
         update_homebrew: yes
 
-#     - name: "Install from Mac app store"
-#       shell: mas install {{ item }}
-#       with_items:
-#         - 497799835 # xcode
+    #     - name: "Install from Mac app store"
+    #       shell: mas install {{ item }}
+    #       with_items:
+    #         - 497799835 # xcode
 
     - name: Get the path to ZSH
       become: false
@@ -173,7 +183,6 @@
         - ms-python.python
         - redhat.vscode-yaml
 
-
     - git:
         repo: https://github.com/asdf-vm/asdf.git
         dest: "/Users/{{ lookup('env', 'USER') }}/.asdf"
@@ -224,7 +233,6 @@
 #         asdf install erlang 24.0.2
 #         asdf global  erlang 24.0.2
 
-
 #     - name: "Install default elixir"
 #       shell: |
 #         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
@@ -240,8 +248,7 @@
 #         - apollo
 #         - generator-generator
 #         - yo
-        
+
 #     - name: re-generate bins now we've installed some yarn packages
 #       shell: asdf reshim nodejs
-        
 
