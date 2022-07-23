@@ -37,6 +37,7 @@
         - ngrok
         - sublime-text
         - visual-studio-code
+        - openvpn-connect
         
     - name: "Install homebrew packages"
       community.general.homebrew:
@@ -63,7 +64,7 @@
           'libxslt',
           'libyaml',
           'mas',
-          'openssl' ,
+          'openssl',
           'pkg-config',
           'postgresql',
           'pyenv',
