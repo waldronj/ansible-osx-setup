@@ -21,6 +21,7 @@
           homebrew/cask-versions,
           thoughtbot/formulae,
           weaveworks/tap,
+          warrensbox/tap,
         ]
 
     - name: Install core packages via brew casks
@@ -65,14 +66,17 @@
           'openssl' ,
           'pkg-config',
           'postgresql',
+          'pyenv',
           'rcm',
           'readline',
           'redis',
           'sqlite3',
+          'tfswitch',
           'tmux',
           'unixodbc',
           'unzip',
           'vim',
+          'virtualenv',
           'watchman',
           'xz',
           'yarn',
