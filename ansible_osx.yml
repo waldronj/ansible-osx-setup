@@ -126,7 +126,7 @@
         owner: "{{ lookup('env', 'USER') }}"
         force: yes
 
-    - name: Create a default VSCode keuybinding configuration
+    - name: Create a default VSCode keybinding configuration
       template:
         src: templates/vscode-keybindings.json.j2
         dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/keybindings.json
@@ -146,6 +146,33 @@
         - streetsidesoftware.code-spell-checker
         - github.vscode-pull-request-github
         - amazonwebservices.aws-toolkit-vscode
+        - ms-dotnettools.vscode-dotnet-runtime
+        - ms-vscode.vscode-node-azure-pack
+        - ms-azuretools.vscode-docker
+        - github.remotehub
+        - golang.go
+        - ms-toolsai.jupyter
+        - ms-toolsai.jupyter-keymap
+        - davidanson.vscode-markdownlint
+        - esbenp.prettier-vscode
+        - argutec.argutec-azure-repos
+        - bencoleman.armview
+        - ms-vscode.azure-account
+        - ms-vscode.powershell
+        - ms-vscode.azurecli
+        - ms-kubernetes-tools.vscode-aks-tools
+        - ms-azuretools.vscode-logicapps
+        - ms-azuretools.vscode-azurelogicapps
+        - ms-azure-devops.azure-pipelines
+        - aaron-bond.better-comments
+        - donjayamanne.git-extension-pack
+        - codezombiech.gitignore
+        - hashicorp.terraform
+        - mongodb.mongodb-vscode
+        - ms-python.vscode-pylance
+        - ms-python.python
+        - redhat.vscode-yaml
+
 
     - git:
         repo: https://github.com/asdf-vm/asdf.git
