@@ -44,6 +44,7 @@
         - sublime-text
         - visual-studio-code
         - openvpn-connect
+        - zoom
 
     - name: "Install homebrew packages"
       community.general.homebrew:
