@@ -45,6 +45,7 @@
         - visual-studio-code
         - openvpn-connect
         - zoom
+        - powershell
 
     - name: "Install homebrew packages"
       community.general.homebrew:
