@@ -22,11 +22,6 @@
       community.general.homebrew_tap:
         name:
           [
-            adoptopenjdk/openjdk,
-            fishtown-analytics/dbt,
-            homebrew/cask-versions,
-            thoughtbot/formulae,
-            weaveworks/tap,
             warrensbox/tap,
           ]
 
