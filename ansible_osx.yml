@@ -36,6 +36,7 @@
         - google-chrome
         - iterm2
         - ngrok
+        - neo4j
         - sublime-text
         - visual-studio-code
         - openvpn-connect
@@ -54,7 +55,6 @@
             "bfg",
             "coreutils",
             "curl",
-            "dbt@0.18.0",
             "direnv",
             "docker",
             "fzf",
@@ -71,6 +71,7 @@
             "libyaml",
             "mas",
             "minikube",
+            "neo4j",
             "openssl",
             "pkg-config",
             "postgresql",
@@ -126,19 +127,19 @@
         owner: "{{ lookup('env', 'USER') }}"
         force: yes
 
-    - name: Create a default VSCode configuration
-      template:
-        src: templates/vscode-settings.json.j2
-        dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/settings.json
-        owner: "{{ lookup('env', 'USER') }}"
-        force: yes
+#- name: Create a default VSCode configuration
+#  template:
+#    src: templates/vscode-settings.json.j2
+#    dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/settings.json
+#    owner: "{{ lookup('env', 'USER') }}"
+#    force: yes
 
-    - name: Create a default VSCode keybinding configuration
-      template:
-        src: templates/vscode-keybindings.json.j2
-        dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/keybindings.json
-        owner: "{{ lookup('env', 'USER') }}"
-        force: yes
+#    - name: Create a default VSCode keybinding configuration
+#      template:
+#        src: templates/vscode-keybindings.json.j2
+#        dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/keybindings.json
+#        owner: "{{ lookup('env', 'USER') }}"
+#        force: yes
 
     # Add something which ensures path is set here
     - name: Install VSCode extensions
